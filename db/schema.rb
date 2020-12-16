@@ -14,9 +14,11 @@ ActiveRecord::Schema.define(version: 2020_12_15_041631) do
 
   create_table "moves", force: :cascade do |t|
     t.string "name"
+    t.integer "pokemon_move_id"
   end
 
   create_table "pokemon_moves", force: :cascade do |t|
+    t.string "move_name"
     t.integer "pokemon_id"
     t.integer "move_id"
     t.index ["move_id"], name: "index_pokemon_moves_on_move_id"
@@ -27,7 +29,6 @@ ActiveRecord::Schema.define(version: 2020_12_15_041631) do
     t.string "name"
     t.string "pokemon_type"
     t.integer "trainer_id"
-    t.index ["trainer_id"], name: "index_pokemons_on_trainer_id"
   end
 
   create_table "trainers", force: :cascade do |t|
@@ -36,7 +37,4 @@ ActiveRecord::Schema.define(version: 2020_12_15_041631) do
     t.string "password_digest"
   end
 
-  add_foreign_key "pokemon_moves", "moves"
-  add_foreign_key "pokemon_moves", "pokemons"
-  add_foreign_key "pokemons", "trainers"
 end
