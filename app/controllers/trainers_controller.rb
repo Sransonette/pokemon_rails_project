@@ -4,6 +4,7 @@ class TrainersController < ApplicationController
   end
 
   def create
+    binding.pry
     trainer = Trainer.create(trainer_params)
     if trainer.valid?
       session[:trainer_id] = trainer.id
@@ -19,7 +20,7 @@ class TrainersController < ApplicationController
 
   private
   def trainer_params
-    params.require(:username).permit(:password)
+    params.require(:trainer).permit(:username, :email, :password)
   end
 
 end
