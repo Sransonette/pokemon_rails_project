@@ -4,4 +4,10 @@ class ApplicationController < ActionController::Base
         redirect_to login_path
     end
 
+    def current_user
+        if session[:username]
+            @current_user = Trainer.find(session[:username])
+        end
+    end
+
 end
