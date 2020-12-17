@@ -1,0 +1,5 @@
+<h1>Pokedex</h1>
+
+<% @pokemon.each do |p| %>
+    <%= link_to "{p.name}", pokemon_path(pokemon) %>
+

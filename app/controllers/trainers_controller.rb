@@ -4,7 +4,6 @@ class TrainersController < ApplicationController
   end
 
   def create
-    binding.pry
     trainer = Trainer.create(trainer_params)
     if trainer.valid?
       session[:trainer_id] = trainer.id
@@ -15,7 +14,7 @@ class TrainersController < ApplicationController
   end
 
   def show
-    @trainer = Trainer.find_by(:id => params[:id])
+    @trainer = Trainer.find_by(params[:username])
   end
 
   private

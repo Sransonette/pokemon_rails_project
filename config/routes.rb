@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
 
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'application#home'
-  resources :trainers, only: [:new, :create, :show]
+  
 
+  resources :pokemon
+  get '/index', to: 'pokemon#index'
+  resources :trainers, only: [:new, :create, :show] do
+    resources :pokemon
+  end
+
+  root to: 'application#home'
+
+  
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
 
 end
