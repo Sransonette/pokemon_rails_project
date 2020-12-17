@@ -1,5 +1,5 @@
 class PokemonMove < ApplicationRecord
-    has_many :pokemon 
-    has_many :moves
+    belongs_to :pokemon 
+    belongs_to :move
     
 end
