@@ -6,6 +6,7 @@ class PokemonController < ApplicationController
   end  
   
   def new
+    @trainer = current_user
     @pokemon = Pokemon.new
   end
 
@@ -13,7 +14,7 @@ class PokemonController < ApplicationController
     
     @pokemon = current_user.pokemon.build(pokemon_params)
     if @pokemon.save
-      redirect_to trainer_path(current_user)
+      redirect_to trainer_path(@pokemon)
     else
       render :new
     end

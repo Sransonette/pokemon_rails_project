@@ -10,25 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_041631) do
+ActiveRecord::Schema.define(version: 2020_12_15_041630) do
 
-  create_table "moves", force: :cascade do |t|
-    t.string "name"
-    t.integer "pokemon_move_id"
-  end
-
-  create_table "pokemon_moves", force: :cascade do |t|
-    t.string "move_name"
+  create_table "belts", force: :cascade do |t|
+    t.string "belt_name"
     t.integer "pokemon_id"
-    t.integer "move_id"
-    t.index ["move_id"], name: "index_pokemon_moves_on_move_id"
-    t.index ["pokemon_id"], name: "index_pokemon_moves_on_pokemon_id"
+    t.integer "trainer_id"
+    t.index ["pokemon_id"], name: "index_belts_on_pokemon_id"
+    t.index ["trainer_id"], name: "index_belts_on_trainer_id"
   end
 
   create_table "pokemons", force: :cascade do |t|
     t.string "name"
     t.string "pokemon_type"
-    t.integer "trainer_id"
   end
 
   create_table "trainers", force: :cascade do |t|
