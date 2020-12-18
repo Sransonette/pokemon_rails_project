@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_041630) do
+ActiveRecord::Schema.define(version: 2020_12_18_051910) do
 
   create_table "belts", force: :cascade do |t|
     t.string "belt_name"
     t.integer "pokemon_id"
     t.integer "trainer_id"
+    t.integer "tier"
     t.index ["pokemon_id"], name: "index_belts_on_pokemon_id"
     t.index ["trainer_id"], name: "index_belts_on_trainer_id"
   end

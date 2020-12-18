@@ -1,4 +1,4 @@
-class PokemonMove < ApplicationRecord
+class Belt < ApplicationRecord
     belongs_to :pokemon 
     belongs_to :trainer
     

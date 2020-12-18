@@ -1,21 +1,14 @@
 Rails.application.routes.draw do
 
   
-  get 'belts/index'
-  get 'belts/show'
-  get 'belts/new'
-  get 'belts/create'
-  get 'belts/edit'
-  get 'belts/update'
-  get 'belts/destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   resources :pokemon
   get '/index', to: 'pokemon#index'
-  resources :trainers, only: [:new, :create, :show] do
-    resources :pokemon
+  resources :trainers, only: [:new, :create, :show] 
+  resources :belts do
+    resources :pokemon, only: [:new, :index]
   end
-  resources :belts
 
   root to: 'application#home'
 
