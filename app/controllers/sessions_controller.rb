@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    if !session[:username].nil?
+    if !session[:trainer_id].nil?
       session.delete :username
       redirect_to root_path
     end
