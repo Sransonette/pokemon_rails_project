@@ -1,2 +1,8 @@
-<h1>Pokemon#new</h1>
-<p>Find me in app/views/pokemon/new.html.erb</p>
+<%= form_for new_pokemon_path do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :pokemon_type %>
+    <%= f.text_field :pokemon_type %>
+    <%= f.submit "Create your pokemon" %>
+
+<% end %>

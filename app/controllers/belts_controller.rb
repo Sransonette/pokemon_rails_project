@@ -1,6 +1,5 @@
 class BeltsController < ApplicationController
   def index
-    @trainer = current_user.belts
     @belts = Belt.all
   end
 
@@ -20,9 +19,11 @@ class BeltsController < ApplicationController
 
   def create 
     
-    @belts = Belt.new(belt_params)
-    if @belts.save
-      redirect_to belts_path
+    if !belt_params.blank?
+      @belts = Belt.new(belt_params)
+      @belts.trainer = current_user
+      @belts.save
+      redirect_to belt_path(@belt)
     else 
       render :new
     end
@@ -50,6 +51,6 @@ class BeltsController < ApplicationController
   private
 
   def belt_params
-    params.require(:belts).permit(:belt_name, :tier)
+    params.require(:belt).permit(:belt_name, :tier)
   end
 end

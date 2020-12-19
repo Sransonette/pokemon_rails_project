@@ -10,15 +10,16 @@ class SessionsController < ApplicationController
       redirect_to trainer_path(@trainer)
     else
       render :new
-  end
-  
-  def destroy
-    if !session[:trainer_id].nil?
-      session.delete :username
-      redirect_to root_path
     end
   end
-end
+
+  
+  
+  def destroy
+    session.delete :username
+    redirect_to root_path
+  end
+
 end
 
 

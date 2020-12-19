@@ -2,27 +2,27 @@ class PokemonController < ApplicationController
   
   def index
     @pokemon = current_user.pokemon
-    redirect_to
+    redirect_to pokemon_index_path
   end  
-  
-  def new
-    @trainer = current_user
-    @pokemon = Pokemon.new
-  end
-
-  def create
-    
-    @pokemon = current_user.pokemon.build(pokemon_params)
-    if @pokemon.save
-      redirect_to trainer_path(@pokemon)
-    else
-      render :new
-    end
-  end
 
   def show
     @trainer = Trainer.find(params[:username])
       @pokemon = Pokemon.find(params[:id])
+  end
+  
+  def new
+    @trainer = current_user
+    @pokemons = Pokemon.new
+    
+  end
+
+  def create
+    @pokemon = Pokemon.new(pokemon_params)
+    if @pokemon.save
+      redirect_to trainer_path(@pokemon)
+    else
+      redirect_to pokemon_path
+    end
   end
 
   def edit
