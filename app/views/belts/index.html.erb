@@ -1,4 +1,8 @@
 <h1>Belts</h1>
 
-<% @belts.all%>
+<% Belt.all.each do |belt| %>
+<%= belt.belt_name %>
+<%= belt.pokemon.name %>
+<%end%>
+
     

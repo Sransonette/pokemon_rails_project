@@ -1,4 +1,4 @@
-class PokemonController < ApplicationController
+class PokemonsController < ApplicationController
   
   def index
     @pokemon = current_user.pokemon
@@ -12,11 +12,12 @@ class PokemonController < ApplicationController
   
   def new
     @trainer = current_user
-    @pokemons = Pokemon.new
+    @pokemon = Pokemon.new
     
   end
 
   def create
+  
     @pokemon = Pokemon.new(pokemon_params)
     if @pokemon.save
       redirect_to trainer_path(@pokemon)

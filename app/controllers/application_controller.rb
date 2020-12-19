@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
     end
 
     def current_user
-        if session[:username]
-            @current_user = Trainer.find(session[:username])
+        if session[:trainer_id]
+            @current_user = Trainer.find_by(id: session[:trainer_id])
         end
     end
 

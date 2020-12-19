@@ -9,21 +9,21 @@ class BeltsController < ApplicationController
   end
 
   def new
-    
-    if @trainers = Trainer.find_by_id(params[:trainer_id])
-      @belts = @trainers.belts.build(belt_params)
-    else
-      @belts = Belt.new
-    end
+    @belts = Belt.new
   end
 
   def create 
-    
+  
     if !belt_params.blank?
       @belts = Belt.new(belt_params)
       @belts.trainer = current_user
-      @belts.save
-      redirect_to belt_path(@belt)
+      if @belts.save
+        redirect_to belts_path
+      else
+       
+        raise @belts.errors.inspect
+        render :new
+      end
     else 
       render :new
     end
@@ -51,6 +51,6 @@ class BeltsController < ApplicationController
   private
 
   def belt_params
-    params.require(:belt).permit(:belt_name, :tier)
+    params.require(:belt).permit(:belt_name, :tier, :trainer_id, :pokemon_id, pokemon_attributes: [:name, :pokemon_type])
   end
 end
