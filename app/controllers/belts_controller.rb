@@ -10,6 +10,7 @@ class BeltsController < ApplicationController
 
   def new
     @belts = Belt.new
+    @belts.build_pokemon
   end
 
   def create 

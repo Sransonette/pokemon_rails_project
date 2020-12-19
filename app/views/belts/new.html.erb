@@ -4,7 +4,7 @@ Create new belt to hold your pokeballs
     <%= f.text_field :belt_name %>
     <%= f.label :tier %>
     <%= f.text_field :tier %><br>
-        <%= f.fields_for :pokemon, @belts.build_pokemon do |p| %>
+        <%= f.fields_for :pokemon do |p| %>
         <%= p.hidden_field :id %>
         <%= p.label :name %>
         <%= p.text_field :name %>
