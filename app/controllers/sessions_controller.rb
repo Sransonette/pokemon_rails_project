@@ -3,6 +3,10 @@ class SessionsController < ApplicationController
     @trainer = Trainer.new
   end
 
+  def omniauth
+    binding.pry
+  end
+
   def create
     @trainer = Trainer.find_by(username: params[:trainer][:username])
     if @trainer && @trainer.authenticate(params[:trainer][:password])

@@ -5,12 +5,12 @@ class BeltsController < ApplicationController
   end
 
   def show
-    @trainer = Trainer.find(params[:trainer_id])
+    current_user
       @belt = Belt.find(params[:id])
   end
 
   def new
-    @trainer = Trainer.find(params[:trainer_id])
+    current_user
     @belts = Belt.new
     @belts.build_pokemon
   end

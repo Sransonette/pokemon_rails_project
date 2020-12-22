@@ -5,11 +5,11 @@
     <%= f.text_field :tier %><br>
         <%= f.fields_for :pokemon do |p| %>
         <%= p.hidden_field :id %>
-        <%= p.label :name %>
+        <%= p.label :pokemon_name %>
         <%= p.text_field :name %>
         <%= p.label :pokemon_type %>
         <%= p.text_field :pokemon_type %>
         <% end %>
 <%= f.submit %>
 <% end %>
-<%= button_to "Home", trainer_path(@trainer), method: :get %>
+<%= button_to "Home", trainer_path(current_user), method: :get %>
