@@ -2,7 +2,9 @@
 
 <% Belt.all.each do |belt| %>
 <%= belt.belt_name %>
-<%= belt.pokemon.name %>
-<%end%>
+<%= belt.pokemon.name %><br>
+<%= button_to "Edit belt and pokemon here", edit_belt_path(belt), method: :get %>
+<p><%= button_to "Delete", belt, method: :delete %>
 
-    
+<%end%>
+<%= button_to "Home", trainer_path, method: :get %>

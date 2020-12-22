@@ -1,15 +1,2 @@
 Create new belt to hold your pokeballs
-<%= form_for @belts do |f| %>
-    <%= f.label :belt_name %>
-    <%= f.text_field :belt_name %>
-    <%= f.label :tier %>
-    <%= f.text_field :tier %><br>
-        <%= f.fields_for :pokemon do |p| %>
-        <%= p.hidden_field :id %>
-        <%= p.label :name %>
-        <%= p.text_field :name %>
-        <%= p.label :pokemon_type %>
-        <%= p.text_field :pokemon_type %>
-        <% end %>
-<%= f.submit "Create Belt with your first pokemon" %>
-<% end %>
+<%= render 'form'%>

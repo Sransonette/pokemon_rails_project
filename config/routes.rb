@@ -15,9 +15,10 @@ Rails.application.routes.draw do
   root to: 'application#home'
 
   post '/pokemons/new', to: 'pokemons#create'
+  delete '/belts/:id', to: 'belts#delete'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-
+  
 
 end

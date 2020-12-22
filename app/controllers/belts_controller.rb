@@ -4,11 +4,12 @@ class BeltsController < ApplicationController
   end
 
   def show
-    @trainer = Trainer.find(params[:username])
+    @trainer = Trainer.find(params[:trainer_id])
       @belt = Belt.find(params[:id])
   end
 
   def new
+    @trainer = Trainer.find(params[:trainer_id])
     @belts = Belt.new
     @belts.build_pokemon
   end
@@ -31,8 +32,11 @@ class BeltsController < ApplicationController
   end
 
   def edit
-    @belt = Belt.find(params[:id])
-    render :edit
+    if @belts = Belt.find(params[:id])
+      @pokemon = Pokemon.all
+    else
+      render :edit
+    end
   end
 
   def update
