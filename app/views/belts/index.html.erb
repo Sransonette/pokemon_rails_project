@@ -1,10 +1,11 @@
 <h1>Belts</h1>
 
 <% Belt.all.each do |belt| %>
+<h3>Belt Name</h3>
 <%= belt.belt_name %>
+<h3>Pokemon Name</h3>
 <%= belt.pokemon.name %><br>
 <%= button_to "Edit belt and pokemon here", edit_belt_path(belt), method: :get %>
 <p><%= button_to "Delete", belt, method: :delete %>
 
 <%end%>
-<%= button_to "Home", trainer_path, method: :get %>

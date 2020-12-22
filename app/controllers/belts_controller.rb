@@ -1,6 +1,7 @@
 class BeltsController < ApplicationController
   def index
     @belts = Belt.all
+    
   end
 
   def show
@@ -22,8 +23,6 @@ class BeltsController < ApplicationController
       if @belts.save
         redirect_to belts_path
       else
-       
-        raise @belts.errors.inspect
         render :new
       end
     else 
