@@ -2,7 +2,6 @@ class Trainer < ApplicationRecord
     has_secure_password
     has_many :belts
     has_many :pokemon, through: :belts
-    validates_uniqueness_of :username
     validates :username, presence: true
     validates :email, presence: true
 
@@ -10,7 +9,7 @@ class Trainer < ApplicationRecord
         Trainer.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
             u.username = auth['info']['first_name']
             u.email = auth['info']['email']
-            u.password = SecureRandom.hex(10..15)
+            u.password = SecureRandom.hex(10)
         end
     end
 

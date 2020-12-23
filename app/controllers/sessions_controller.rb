@@ -31,9 +31,8 @@ class SessionsController < ApplicationController
 
   def omniauth 
     trainer = Trainer.find_or_create_by_omniauth(auth)
-
     if trainer.valid?
-      session[:trainer_id] = current_user
+      session[:trainer_id] = trainer.id
       redirect_to trainer_path(trainer)  
     else
       #flash[:error] = user.errors.full_messages.join(", ")

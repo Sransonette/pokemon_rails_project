@@ -5,7 +5,7 @@ class Belt < ApplicationRecord
 
     accepts_nested_attributes_for :pokemon
 
-    def self.
+    
 
    
 

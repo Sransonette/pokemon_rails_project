@@ -1,4 +1,6 @@
 class BeltsController < ApplicationController
+  before_action :logged_in?
+
   def index
     @belts = Belt.all
     
@@ -33,6 +35,7 @@ class BeltsController < ApplicationController
   end
 
   def edit
+
     if @belts = Belt.find(params[:id])
       @pokemon = Pokemon.all
     else
@@ -59,4 +62,5 @@ class BeltsController < ApplicationController
   def belt_params
     params.require(:belt).permit(:belt_name, :tier, :trainer_id, :pokemon_id, pokemon_attributes: [:name, :pokemon_type])
   end
+  
 end
