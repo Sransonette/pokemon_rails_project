@@ -1,3 +1,7 @@
+<% if flash[:error] %>
+	<%= flash[:error] %>
+<% end %>
+
 <%= form_for @trainer do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %>
@@ -7,7 +11,8 @@
     <%= f.password_field :password %>
     <%= f.submit "Sign up" %>
 
-
-
-
 <% end %>
+
+<%= button_to "Already have an account? Log in here!", root_path, method: :get %>
+
+

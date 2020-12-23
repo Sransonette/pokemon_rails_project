@@ -1,2 +1,5 @@
 Create new belt to hold your pokeballs
+<h1><% if flash[:error] %>
+	<%= flash[:error] %>
+<% end %></h1>
 <%= render 'form'%>

@@ -1,11 +1,14 @@
-<%= form_for @trainer, :url => login_path do |f| %>
+<% if flash[:error] %>
+	<%= flash[:error] %>
+<% end %>
+
+<%= form_for @trainer, url: login_path do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %>
     <%= f.label :password %>
     <%= f.password_field :password %>
     <%= f.submit "Log in" %>
 
-
-
-
 <% end %>
+
+<%= button_to "No account? Sign up here!", new_trainer_path, method: :get %>

@@ -23,10 +23,12 @@ class BeltsController < ApplicationController
       if @belts.save
         redirect_to belts_path
       else
-        render :new
+        flash[:error] = "All forms must be filled to proceed"
+        redirect_to new_belt_path
       end
     else 
-      render :new
+      flash[:error] = "All forms must be filled to proceed"
+      redirect_to new_belt_path
     end
   end
 

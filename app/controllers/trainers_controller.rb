@@ -1,4 +1,6 @@
 class TrainersController < ApplicationController
+  
+
   def new
     @trainer = Trainer.new
   end
@@ -9,7 +11,8 @@ class TrainersController < ApplicationController
       session[:trainer_id] = trainer.id
       redirect_to trainer_path(trainer)
     else
-      render :new
+      flash[:error] = "All forms must be filled to proceed"
+      redirect_to new_trainer_path
     end
   end
 
