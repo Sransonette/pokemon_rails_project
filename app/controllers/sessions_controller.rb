@@ -14,12 +14,12 @@ class SessionsController < ApplicationController
 #  end 
 
   # def omniauth
-    
+  #   binding.pry
   #   trainer = Trainer.find_or_create_by(id: auth['uid'], email: auth['info']['email']) do |u|
   #     u.username = auth['info']['first_name']
   #     u.email = auth['info']['email']
   #     u.password = auth['info']['password']
-  #     binding.pry
+  #   binding.pry
   #   end
   #   if trainer.valid?
   #     redirect_to trainer_path
@@ -28,6 +28,19 @@ class SessionsController < ApplicationController
   #     redirect_to root_path
   #   end
   # end
+
+  def omniauth 
+    trainer = Trainer.find_or_create_by_omniauth(auth)
+
+    if trainer.valid?
+      session[:trainer_id] = current_user
+      redirect_to trainer_path(trainer)  
+    else
+      #flash[:error] = user.errors.full_messages.join(", ")
+      redirect_to root_path
+    end
+  end
+
 
   def create
     @trainer = Trainer.find_by(username: params[:trainer][:username])
@@ -47,10 +60,10 @@ class SessionsController < ApplicationController
 
   private
 
-  # def auth
-  #   request.env['omniauth.auth']
+  def auth
+    request.env['omniauth.auth']
 
-  # end
+  end
 
 
 
