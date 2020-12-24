@@ -1,7 +1,10 @@
 <h1> Welcome, <%= @trainer.username %> </h1><br>
 
 <h3>You have <%= @trainer.belts.count %> belts for for holding pokemon. </h3>
-<h3>Current Belts</h3>
+<h3>Top 5 Belts</h3>
+<% @trainer.belts.top_belts.each do |belt|%>
+<%= belt.belt_name %>  <%= belt.tier%><br>
+<% end %>
 
 
 <%= button_to "Create a new belt for a pokemon team", new_trainer_belt_path(@trainer), method: :get %>

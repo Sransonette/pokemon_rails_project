@@ -6,13 +6,13 @@ class TrainersController < ApplicationController
   end
 
   def create
-    trainer = Trainer.create(trainer_params)
+    @trainer = Trainer.create(trainer_params)
     if trainer.valid?
       session[:trainer_id] = trainer.id
-      redirect_to trainer_path(trainer)
+      redirect_to trainer_path(@trainer)
     else
       flash[:error] = "All forms must be filled to proceed"
-      redirect_to new_trainer_path
+      redirect_to signup_path
     end
   end
 
