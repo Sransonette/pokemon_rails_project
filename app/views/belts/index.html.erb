@@ -1,6 +1,6 @@
 <h1>Belts</h1>
 
-<% Belt.all.each do |belt| %>
+<% current_trainer.belts.each do |belt| %>
 <h4>Belt Name and Tier</h4>
 <%= belt.belt_name %>  <%= belt.tier%><br>
 <h4>Pokemon Name and Type</h4>

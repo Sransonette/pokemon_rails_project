@@ -1,8 +1,8 @@
-<h1> Welcome, <%= @trainer.username %> </h1><br>
+<h1> Welcome, <%= current_trainer.username %> </h1><br>
 
-<h3>You have <%= @trainer.belts.count %> belts for for holding pokemon. </h3>
+<h3>You have <%= current_trainer.belts.count %> belts for for holding pokemon. </h3>
 <h3>Top 5 Belts</h3>
-<% @trainer.belts.top_belts.each do |belt|%>
+<% current_trainer.belts.top_belts.each do |belt|%>
 <%= belt.belt_name %>  <%= belt.tier%><br>
 <% end %>
 

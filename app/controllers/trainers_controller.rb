@@ -1,5 +1,6 @@
 class TrainersController < ApplicationController
   before_action :require_login
+  skip_before_action :require_login, only: [:new, :create]
 
   def new
     @trainer = Trainer.new
@@ -7,8 +8,8 @@ class TrainersController < ApplicationController
 
   def create
     @trainer = Trainer.create(trainer_params)
-    if trainer.valid?
-      session[:trainer_id] = trainer.id
+    if @trainer.valid?
+      session[:trainer_id] = @trainer.id
       redirect_to trainer_path(@trainer)
     else
       flash[:error] = "All forms must be filled to proceed"
