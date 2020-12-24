@@ -1,5 +1,5 @@
+<h4><%= render partial: '/layouts/errors', locals: {object: @belts} %></h4>
+
 Create new belt to hold your pokeballs
-<h1><% if flash[:error] %>
-	<%= flash[:error] %>
-<% end %></h1>
+
 <%= render 'form'%>
