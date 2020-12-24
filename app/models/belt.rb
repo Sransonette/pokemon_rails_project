@@ -6,8 +6,12 @@ class Belt < ApplicationRecord
     accepts_nested_attributes_for :pokemon
 
     def self.top_belts
-        Belt.all.order('tier desc').limit(5)
+        all.order('tier desc').limit(5)
     end
+
+    #scope :with_juice, -> { where("juice > 0")}
+
+
 
    
 
