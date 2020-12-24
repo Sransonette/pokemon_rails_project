@@ -4,6 +4,7 @@ class Trainer < ApplicationRecord
     has_many :pokemon, through: :belts
     validates :username, presence: true
     validates :email, presence: true
+    validates :email, uniqueness: true
 
     def self.find_or_create_by_omniauth(auth)
         Trainer.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
