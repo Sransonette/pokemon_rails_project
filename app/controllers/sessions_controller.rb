@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   before_action :require_login, only: [:destroy]
-  
+
   def new
     @trainer = Trainer.new
   end
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    session.delete :username
+    session.delete :trainer_id
     redirect_to root_path
   end
 
