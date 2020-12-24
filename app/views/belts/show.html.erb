@@ -1,7 +1,10 @@
-<h1>Belts#show</h1>
+<h1>Updated Belt Info</h1>
 
+<h3>Belt Info</h3>
 <%= @belt.belt_name %>
 <%= @belt.tier%><br>
-<%= @pokemon.name%>
+<h3>Pokemon Info</h3>
+<%= @belt.pokemon.name %> 
+<%= @belt.pokemon.pokemon_type%>
 
 <%= button_to "Home", trainer_path, method: :get %>

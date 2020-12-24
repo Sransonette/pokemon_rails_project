@@ -1,17 +1,19 @@
 class PokemonsController < ApplicationController
+
+  before_action :require_login
   
   def index
-    @pokemon = current_user.pokemon
+    @pokemon = current_trainer.pokemon
     redirect_to pokemon_index_path
   end  
 
   def show
-    @trainer = Trainer.find(params[:username])
-      @pokemon = Pokemon.find(params[:id])
+    @trainer = current_trainer
+      @pokemon = current_pokemon
   end
   
   def new
-    @trainer = current_user
+    @trainer = current_trainer
     @pokemon = Pokemon.new
     
   end
@@ -27,21 +29,24 @@ class PokemonsController < ApplicationController
   end
 
   def edit
-    @pokemon = Pokemon.find(params[:username])
-    render :edit
+    if @pokemon = current_pokemon
+      @pokemon = current_pokemon
+    else
+      render :edit
+    end
   end
 
   def update
-    @pokemon = Pokemon.find(params[:username])
+    @pokemon = current_pokemon
     if @pokemon.update(pokemon_params)
-      redirect_to trainer_pokemon_path(current_user, @pokemon)
+      redirect_to trainer_belt_path(current_trainer, @belts)
     else
       render :edit
     end
   end
 
   def destroy
-    Pokemon.find(params[:id]).destroy
+    current_pokemon.destroy
     redirect_to trainer_path(current_user)
   end
 

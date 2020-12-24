@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   post '/pokemons/new', to: 'pokemons#create'
   delete '/belts/:id', to: 'belts#delete'
+  patch '/belts/:id', to: 'belts#update'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

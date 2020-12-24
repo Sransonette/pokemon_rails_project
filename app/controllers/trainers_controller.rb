@@ -1,5 +1,5 @@
 class TrainersController < ApplicationController
-  
+  before_action :require_login
 
   def new
     @trainer = Trainer.new

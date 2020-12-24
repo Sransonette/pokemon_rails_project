@@ -1,33 +1,10 @@
 class SessionsController < ApplicationController
+
+  before_action :require_login, only: [:destroy]
+  
   def new
     @trainer = Trainer.new
   end
-
-#   def omniauth
-#     binding.pry
-#     trainer = Trainer.find_or_create_by(username: request.env['email']) do |u|
-#         u.password = 'asdfghjkl'
-#     end 
-#     trainer.save 
-#     session[:trainer_id] = trainer.id 
-#     redirect_to root_path 
-#  end 
-
-  # def omniauth
-  #   binding.pry
-  #   trainer = Trainer.find_or_create_by(id: auth['uid'], email: auth['info']['email']) do |u|
-  #     u.username = auth['info']['first_name']
-  #     u.email = auth['info']['email']
-  #     u.password = auth['info']['password']
-  #   binding.pry
-  #   end
-  #   if trainer.valid?
-  #     redirect_to trainer_path
-  #   else
-  #     #flash[:message] = trainer.errors.full_message.join(", ")
-  #     redirect_to root_path
-  #   end
-  # end
 
   def omniauth 
     trainer = Trainer.find_or_create_by_omniauth(auth)

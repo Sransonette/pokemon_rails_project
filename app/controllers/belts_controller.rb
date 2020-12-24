@@ -1,27 +1,29 @@
 class BeltsController < ApplicationController
-  before_action :logged_in?
+  before_action :require_login
 
   def index
+    @trainer = current_trainer
     @belts = Belt.all
     
   end
 
   def show
-    current_user
-      @belt = Belt.find(params[:id])
+    current_trainer
+      @belt = current_belt
+      @pokemon = current_pokemon
   end
 
   def new
-    current_user
-    @belts = Belt.new
-    @belts.build_pokemon
+      current_trainer
+      @belts = Belt.new
+      @belts.build_pokemon
   end
 
   def create 
   
     if !belt_params.blank?
       @belts = Belt.new(belt_params)
-      @belts.trainer = current_user
+      @belts.trainer = current_trainer
       if @belts.save
         redirect_to belts_path
       else
@@ -36,25 +38,26 @@ class BeltsController < ApplicationController
 
   def edit
 
-    if @belts = Belt.find(params[:id])
-      @pokemon = Pokemon.all
+    if @belts = current_belt
+      @pokemon = current_pokemon
     else
       render :edit
     end
   end
 
   def update
-    @belts = Belt.find(params[:id])
+    @belts = current_belt
+    @pokemon = current_pokemon
     if @belts.update(belt_params)
-      redirect_to trainer_belt_path(current_user, @belts)
+      redirect_to trainer_belt_path(current_trainer, @belts)
     else
       render :edit
     end
   end
 
   def destroy
-    Belt.find(params[:id]).destroy
-    redirect_to trainer_path(current_user)
+    current_belt.destroy
+    redirect_to belts_path
   end
 
   private
