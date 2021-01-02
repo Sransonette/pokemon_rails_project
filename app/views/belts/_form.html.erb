@@ -1,5 +1,5 @@
 <h4><%= render partial: '/layouts/errors', locals: {object: @belts} %></h4>
-
+<div>
 <%= form_for @belts do |f| %>
     <%= f.label :belt_name %>
     <%= f.text_field :belt_name %>
@@ -14,3 +14,4 @@
         <% end %>
 <%= f.submit %>
 <% end %>
+</div>

@@ -1,13 +1,17 @@
 <h1>Belts</h1>
+<div>
 
 <% current_trainer.belts.each do |belt| %>
+<p class="double">
 <h4>Belt Name and Tier</h4>
 <%= belt.belt_name %>  <%= belt.tier%><br>
 <h4>Pokemon Name and Type</h4>
 <%= belt.pokemon.name %> <%= belt.pokemon.pokemon_type%>
 <%= button_to "Edit belt and pokemon here", edit_belt_path(belt), method: :get %>
-<p><%= button_to "Delete", belt, method: :delete %>
-
+<p><%= button_to "Delete", belt, method: :delete %></p>
+</p>
 <%end%><br>
+
+</div>
 
 

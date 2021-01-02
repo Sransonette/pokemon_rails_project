@@ -9,6 +9,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <style>
+h2 {text-align: center;}
+h3 {text-align: center;}
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+p.double {border-style: double;
+</style>
+
   <body>
     <%if !logged_in?%>
     <%= button_to "Log in with Google", '/auth/google_oauth2'%>
