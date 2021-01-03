@@ -2,6 +2,7 @@ class Belt < ApplicationRecord
     belongs_to :pokemon 
     belongs_to :trainer
     validates :belt_name, presence: true
+    validates :tier, presence: true
 
     accepts_nested_attributes_for :pokemon
 
